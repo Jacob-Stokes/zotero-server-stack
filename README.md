@@ -23,13 +23,17 @@ sed -i 's/^INSTANCE_PREFIX=.*/INSTANCE_PREFIX=test-/; s/^MCP_PORT=.*/MCP_PORT=71
 
 ## Containers
 
-Just one:
+Always installed — just this one:
 
 | Container | Job |
 |---|---|
 | `zotero-mcp` | MCP server. Talks to `api.zotero.org` directly — no vault, no sync backend to pick, nothing else running. |
 
-Optional, if you also want a real Zotero app in a browser tab (for browsing your library, or opening PDFs — see [Tools](#tools) for why the MCP can't): [`extras/zotero-desktop`](extras/zotero-desktop). It's a separate, off-by-default piece; the MCP works fully without it.
+Optional, not installed by `./install.sh`:
+
+| Container | Job |
+|---|---|
+| [`zotero-desktop`](extras/zotero-desktop) | The real Zotero app in a browser tab. Only useful for browsing your library by eye, or opening a PDF — the MCP can't return file bytes (see [Tools](#tools)). Set up separately; the MCP works fully without it. |
 
 ## Reaching the MCP
 
