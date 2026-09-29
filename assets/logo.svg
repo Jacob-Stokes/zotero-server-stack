@@ -1,20 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200" role="img" aria-label="Zotero Server Stack logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Zotero Server Stack logo">
   <title>Zotero Server Stack</title>
   <defs>
-    <linearGradient id="gem" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="z" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#f4a3a9"/>
-      <stop offset="0.55" stop-color="#cc2936"/>
+      <stop offset="0.5" stop-color="#cc2936"/>
       <stop offset="1" stop-color="#6e1018"/>
     </linearGradient>
   </defs>
 
-  <!-- tall narrow diamond -->
-  <polygon points="60,4 104,100 60,196 16,100" fill="url(#gem)"/>
-  <!-- facets: lit left half, shaded lower-right -->
-  <polygon points="60,4 60,196 16,100" fill="#ffffff" opacity="0.10"/>
-  <polygon points="60,100 104,100 60,196" fill="#000000" opacity="0.12"/>
+  <!-- stylised block Z, no container shape -->
+  <polygon fill="url(#z)" points="
+    20,20 180,20 180,58 74,58 180,142 180,180 20,180 20,142 126,142 20,58" />
 
-  <!-- stylised Z -->
-  <path d="M40,74 L80,74 L42,126 L82,126" fill="none" stroke="#ffffff"
-        stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- sync symbol, centered over the Z's diagonal -->
+  <circle cx="100" cy="100" r="38" fill="#ffffff" opacity="0.94"/>
+  <g fill="none" stroke="#cc2936" stroke-width="6" stroke-linecap="round">
+    <path d="M79.7 91.5 A24 24 0 0 1 124.6 88.9"/>
+    <path d="M120.3 108.5 A24 24 0 0 1 75.4 111.1"/>
+  </g>
+  <g fill="#cc2936">
+    <polygon points="129.2,88.9 116.3,93.8 125.8,101.9"/>
+    <polygon points="70.8,111.1 83.7,106.2 74.2,98.1"/>
+  </g>
 </svg>

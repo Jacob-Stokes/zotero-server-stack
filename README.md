@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="Zotero Server Stack logo" width="90">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.gif">
+    <img src="assets/logo-light.gif" alt="Zotero Server Stack logo" width="90">
+  </picture>
 </p>
 
 <h1 align="center">Zotero Server Stack</h1>
