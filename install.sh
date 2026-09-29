@@ -115,6 +115,29 @@ ok "zotero-mcp is up on http://localhost:${MCP_PORT:-7012}/mcp"
 
 echo
 echo "Bearer token for MCP clients is MCP_BEARER_TOKEN in .env."
-echo
-echo "Want a browser-based Zotero desktop too (a GUI, or to open PDFs)? It's"
-echo "optional and separate from this — see extras/zotero-desktop/README.md."
+
+say "Zotero desktop (optional)"
+cat <<'EOF'
+  The MCP works fully without this — it's for community plugins (Better
+  BibTeX, translators, ...), the Zotero Connector browser extension having
+  somewhere to save into, and PDF text extraction: zotero_attachments only
+  has text to return once some Zotero client has indexed that PDF, and if
+  your other devices are often closed, this is what keeps that happening.
+EOF
+read -rp "  Set it up now? [y/N] " WANT_DESKTOP
+if [ "$WANT_DESKTOP" = "y" ] || [ "$WANT_DESKTOP" = "Y" ]; then
+  ( cd extras/zotero-desktop
+    [ -f .env ] || cp .env.example .env
+    [ -n "${INSTANCE_PREFIX:-}" ] && sed -i.bak "s/^INSTANCE_PREFIX=.*/INSTANCE_PREFIX=${INSTANCE_PREFIX}/" .env && rm -f .env.bak
+    # shellcheck disable=SC1091
+    source .env
+    docker compose up -d
+  )
+  DPORT=$(grep '^DESKTOP_PORT=' extras/zotero-desktop/.env 2>/dev/null | cut -d= -f2- | tr -d '"')
+  ok "zotero-desktop is up"
+  echo "  Open https://localhost:${DPORT:-3001} (self-signed cert — your browser"
+  echo "  will warn, that's expected) and sign in to your Zotero account. That's"
+  echo "  the one step nothing can automate — Zotero has no headless login."
+else
+  echo "  Skipped. Set it up any time — see extras/zotero-desktop/README.md."
+fi

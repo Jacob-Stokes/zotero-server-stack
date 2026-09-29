@@ -4,6 +4,9 @@ The MCP talks to Zotero's own cloud directly, so it works with or without this. 
 
 - A GUI to browse, organise and add papers to your library from a browser.
 - To open PDFs — the MCP can only return an attachment's extracted text, not the file itself (see the root README's Tools section for why).
+- Community plugins (Better BibTeX, translators, ZotMoov, ...) — none of that exists through the Web API, only in a real Zotero.
+- Somewhere for the Zotero Connector browser extension to save into, if your other devices aren't always open.
+- Continuous PDF text extraction. `zotero_attachments get_text` only has text to return once *some* Zotero client has indexed that PDF — if your other devices are often closed, this is what keeps that happening.
 
 It's the same [linuxserver.io Zotero image](https://github.com/linuxserver/docker-zotero) used elsewhere for this. Zotero itself is free software; this image isn't built or bundled here, it's pulled at `docker compose up`.
 
