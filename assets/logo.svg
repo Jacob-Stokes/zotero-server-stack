@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200" role="img" aria-label="Zotero Server Stack logo">
+  <title>Zotero Server Stack</title>
+  <defs>
+    <linearGradient id="gem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4a3a9"/>
+      <stop offset="0.55" stop-color="#cc2936"/>
+      <stop offset="1" stop-color="#6e1018"/>
+    </linearGradient>
+  </defs>
+
+  <!-- tall narrow diamond -->
+  <polygon points="60,4 104,100 60,196 16,100" fill="url(#gem)"/>
+  <!-- facets: lit left half, shaded lower-right -->
+  <polygon points="60,4 60,196 16,100" fill="#ffffff" opacity="0.10"/>
+  <polygon points="60,100 104,100 60,196" fill="#000000" opacity="0.12"/>
+
+  <!-- stylised Z -->
+  <path d="M40,74 L80,74 L42,126 L82,126" fill="none" stroke="#ffffff"
+        stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

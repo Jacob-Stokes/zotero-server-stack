@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.svg" alt="Zotero Server Stack logo" width="90">
+</p>
+
 <h1 align="center">Zotero Server Stack</h1>
 
 <p align="center">Your Zotero library, reachable over MCP, from a server you run yourself.</p>
