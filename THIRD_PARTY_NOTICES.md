@@ -2,14 +2,14 @@
 
 ## services/zotero-mcp/
 
-Our own code, not vendored from anywhere. It talks to
+Original code. It talks to
 [Zotero's Web API v3](https://www.zotero.org/support/dev/web_api/v3/start)
-over HTTPS, using an API key you generate yourself — nothing from Zotero is
+over HTTPS, using a user-supplied API key. Nothing from Zotero is
 bundled or redistributed.
 
 ## extras/zotero-desktop/
 
-Our own compose file, not vendored. It runs
+Original compose file. It runs
 [`lscr.io/linuxserver/zotero`](https://github.com/linuxserver/docker-zotero),
 linuxserver.io's own image, pulled at `docker compose up` rather than built
 or bundled here. Zotero itself is free, open-source software

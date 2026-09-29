@@ -1,14 +1,14 @@
 # Zotero desktop (optional)
 
-The MCP talks to Zotero's own cloud directly, so it works with or without this. Add it if you also want:
+The MCP talks to Zotero's own cloud directly, so it works with or without this. It adds:
 
-- A GUI to browse, organise and add papers to your library from a browser.
-- To open PDFs — the MCP can only return an attachment's extracted text, not the file itself (see the root README's Tools section for why).
-- Community plugins (Better BibTeX, translators, ZotMoov, ...) — none of that exists through the Web API, only in a real Zotero.
-- Somewhere for the Zotero Connector browser extension to save into, if your other devices aren't always open.
-- Continuous PDF text extraction. `zotero_attachments get_text` only has text to return once *some* Zotero client has indexed that PDF — if your other devices are often closed, this is what keeps that happening.
+- A GUI for browsing, organising and adding papers from a browser.
+- PDF viewing. The MCP returns only an attachment's extracted text, not the file (see the root README's Tools section).
+- Community plugins such as Better BibTeX, translators and ZotMoov, which are not available through the Web API.
+- A target for the Zotero Connector browser extension to save into when no other Zotero client is running.
+- Continuous PDF text extraction. `zotero_attachments get_text` has text to return only after a Zotero client has indexed the PDF; this keeps indexing running when other devices are offline.
 
-It's the same [linuxserver.io Zotero image](https://github.com/linuxserver/docker-zotero) used elsewhere for this. Zotero itself is free software; this image isn't built or bundled here, it's pulled at `docker compose up`.
+It uses the [linuxserver.io Zotero image](https://github.com/linuxserver/docker-zotero), pulled at `docker compose up` rather than built or bundled here.
 
 ## Setup
 
@@ -17,9 +17,9 @@ cp .env.example .env
 docker compose up -d
 ```
 
-Open `https://localhost:3001` (self-signed certificate — your browser will warn, that's expected) and sign in to your Zotero account once. It stays signed in after that, the same account and library the MCP already sees, kept in sync by Zotero's own cloud.
+Open `https://localhost:3001` (a self-signed certificate, so the browser shows a warning) and sign in to the Zotero account once. It stays signed in afterwards and syncs the same library the MCP reads, through Zotero's cloud.
 
-It only listens on localhost. To reach it from another device, see the root README's "Reaching the MCP" section — the same options (Tailscale, Cloudflare Tunnel, a reverse proxy) work here too.
+It listens on localhost only. The remote-access options in the root README's "Reaching the MCP" section (Tailscale, Cloudflare Tunnel, a reverse proxy) apply here too.
 
 ## Uninstalling
 
@@ -27,4 +27,4 @@ It only listens on localhost. To reach it from another device, see the root READ
 docker compose down -v
 ```
 
-`-v` deletes the local Zotero profile/cache. Your library isn't stored here — it stays in Zotero's cloud and comes back on next sign-in.
+`-v` deletes the local Zotero profile and cache. The library itself is not stored here; it remains in Zotero's cloud and syncs back on the next sign-in.
