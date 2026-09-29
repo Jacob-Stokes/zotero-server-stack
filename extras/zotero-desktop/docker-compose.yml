@@ -1,0 +1,26 @@
+# Optional: Zotero's real desktop app, in a browser tab. Not needed for the
+# MCP — it talks to Zotero's cloud directly and works with or without this.
+# Add this only if you also want a GUI to browse/organise the library, or to
+# open PDFs (the MCP can't return attachment file bytes; see the root README).
+#
+# Official linuxserver.io image — not built or vendored here. See
+# ../../THIRD_PARTY_NOTICES.md.
+name: ${INSTANCE_PREFIX:-}zotero-desktop
+
+services:
+  zotero-desktop:
+    image: lscr.io/linuxserver/zotero:latest
+    container_name: ${INSTANCE_PREFIX:-}zotero-desktop
+    restart: unless-stopped
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: ${TZ:-UTC}
+    volumes:
+      - zotero-desktop-config:/config
+    ports:
+      - "127.0.0.1:${DESKTOP_PORT:-3001}:3001"
+    shm_size: "1gb"
+
+volumes:
+  zotero-desktop-config:

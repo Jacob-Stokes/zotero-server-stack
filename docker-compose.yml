@@ -1,0 +1,22 @@
+name: ${INSTANCE_PREFIX:-}zotero-server-stack
+
+services:
+  # The MCP server. Talks straight to Zotero's own cloud (api.zotero.org) —
+  # no vault folder, no sync container, nothing else in this stack. Zotero's
+  # Web API v3 already keeps this in step with your library.
+  zotero-mcp:
+    build:
+      context: ./services/zotero-mcp
+    container_name: ${INSTANCE_PREFIX:-}zotero-mcp
+    restart: unless-stopped
+    # Passes through optional settings like MCP_OAUTH_* if set in .env.
+    env_file:
+      - .env
+    environment:
+      PORT: 7012
+      ZOTERO_BASE_URL: https://api.zotero.org
+      ZOTERO_USER_ID: ${ZOTERO_USER_ID:?Set ZOTERO_USER_ID in .env}
+      ZOTERO_API_TOKEN: ${ZOTERO_API_TOKEN:?Set ZOTERO_API_TOKEN in .env}
+      MCP_BEARER_TOKEN: ${MCP_BEARER_TOKEN:?Set MCP_BEARER_TOKEN in .env}
+    ports:
+      - "127.0.0.1:${MCP_PORT:-7012}:7012"

@@ -1,0 +1,26 @@
+name: build
+
+# Checks that the image still builds. Nothing is published: install.sh
+# builds it locally, from the code you cloned.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "services/**"
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: services/zotero-mcp
+          push: false
